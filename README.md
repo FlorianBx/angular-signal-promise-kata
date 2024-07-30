@@ -75,12 +75,14 @@ Le composant `ArticlesComponent` utilise des signaux pour gérer les IDs et réc
 <input type="number" [(ngModel)]="userId">
 <button (click)="userId.set(userId())">Get Articles From User</button>
 <app-form-filter [inputId]="articleId()" [buttonText]="'Fetch Article'" (idChange)="articleId.set($event)"></app-form-filter>
-<div *ngFor="let article of articles(); trackBy: trackById">
-  <div>
+@for (article of articles(); track article.id) {
+  <article>
     <h2>{{ article.title }}</h2>
     <p>{{ article.body }}</p>
-  </div>
-</div>
+  </article>
+} @empty {
+  <p>No articles found</p>
+}
 ```
 
 ### Service d'Article
