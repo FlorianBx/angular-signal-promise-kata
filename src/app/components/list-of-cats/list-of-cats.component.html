@@ -1,1 +1,9 @@
-<p>list-of-cats works!</p>
+<div class="gallery">
+  @if (isLoading()) {
+    <span class=loader></span>
+  } @else {
+    @for (cat of listOfCats(); track cat.id) {
+      <img width="300" src="{{cat.url}}">
+    }
+  }
+</div>
