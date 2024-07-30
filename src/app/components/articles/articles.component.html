@@ -1,0 +1,19 @@
+<h1>Articles</h1>
+<app-form-filter
+  [buttonText]="'Get Article By UserId'"
+  [inputId]="userId()"
+  (idChange)="userId.set($event)"
+></app-form-filter>
+<app-form-filter
+  [buttonText]="'Get Article By Id'"
+  [inputId]="articleId()"
+  (idChange)="articleId.set($event)"
+></app-form-filter>
+@for (article of articles(); track article.id) {
+  <div>
+    <h2>{{article.title}}</h2>
+    <p>{{article.body}}</p>
+  </div>
+} @empty {
+  <p>No articles found</p>
+}
